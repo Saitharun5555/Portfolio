@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sai Tarun Cherukuri — Full-Stack Web Developer & AI / Machine Learning Engineer. View resume, projects and live demos." />
+  <title>Sai Tarun Cherukuri — Portfolio</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/avatar.svg" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- Ambient background -->
+  <div class="ambient-bg" aria-hidden="true">
+    <div class="ambient-blob blob-1"></div>
+    <div class="ambient-blob blob-2"></div>
+  </div>
+
+  <!-- Toast container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- =========================================================================
+       NAVBAR
+       ========================================================================= -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="#home" class="nav-logo">
+        <span class="logo-icon">ST</span>
+        <span>Sai Tarun<span style="color:var(--accent-teal);">.</span></span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="themeToggleBtn" title="Toggle theme" aria-label="Toggle dark/light theme" onclick="toggleTheme()">
+          <svg id="themeIconMoon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg id="themeIconSun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <button class="icon-btn mobile-toggle" id="mobileToggle" aria-label="Open menu" onclick="toggleMobileNav()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =========================================================================
+       HERO
+       ========================================================================= -->
+  <header class="hero-section" id="home">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <span class="hero-badge-pill">
+            <span class="status-dot"></span>
+            <span id="heroStatusBadge">Available for Opportunities</span>
+          </span>
+          <h1 class="hero-title">Hi, I'm <span class="gradient-text" id="heroName">Sai Tarun Cherukuri</span></h1>
+          <p class="hero-subtitle" id="heroTitle">Full-Stack Web Developer & AI / Machine Learning Engineer</p>
+          <p class="hero-bio" id="heroBio"></p>
+
+          <div class="hero-cta-group">
+            <button class="btn btn-primary" onclick="openResumeModal()">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              View Resume
+            </button>
+            <button class="btn btn-secondary" onclick="downloadResume()">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download Resume
+            </button>
+          </div>
+
+          <div class="hero-social-strip">
+            <a class="social-link-pill" id="heroGithub" href="#" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.7 18 5 18 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+              GitHub
+            </a>
+            <a class="social-link-pill" id="heroLinkedin" href="#" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.3a1.8 1.8 0 1 1 0-3.6 1.8 1.8 0 0 1 0 3.6zM19 19h-3v-4.7c0-1.1 0-2.5-1.5-2.5s-1.8 1.2-1.8 2.4V19h-3v-9h2.9v1.2h.04a3.2 3.2 0 0 1 2.9-1.6c3 0 3.6 2 3.6 4.6z"/></svg>
+              LinkedIn
+            </a>
+            <a class="social-link-pill" id="heroEmail" href="#">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              Email
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-image-col">
+          <div class="avatar-card">
+            <div class="avatar-card-inner avatar-wrapper" id="avatarWrapper">
+              <img class="avatar-img" id="heroAvatar" src="assets/avatar.svg" alt="Sai Tarun Cherukuri" />
+              <div class="avatar-edit-overlay" onclick="document.getElementById('avatarFileInput').click()">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                Change Photo
+              </div>
+              <input type="file" id="avatarFileInput" accept="image/*" style="display:none" />
+            </div>
+            <div class="avatar-floating-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span id="heroLocation">Andhra Pradesh, India</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       STATS STRIP
+       ========================================================================= -->
+  <section class="stats-strip">
+    <div class="container">
+      <div class="stats-grid" id="statsGrid"></div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       PROJECTS
+       ========================================================================= -->
+  <section class="projects-section" id="projects">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          Portfolio
+        </span>
+        <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+        <p class="section-subtitle">A selection of web platforms and AI systems I've built — each with a live demo to try.</p>
+      </div>
+
+      <div class="projects-filter-bar" id="projectsFilter">
+        <button class="filter-btn active" onclick="filterProjects('all', this)">All</button>
+        <button class="filter-btn" onclick="filterProjects('web', this)">Web Development</button>
+        <button class="filter-btn" onclick="filterProjects('ml', this)">Machine Learning / AI</button>
+      </div>
+
+      <div class="projects-grid" id="projectsGrid"></div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       EXPERIENCE & EDUCATION
+       ========================================================================= -->
+  <section class="timeline-section" id="experience">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Journey
+        </span>
+        <h2 class="section-title">Experience &amp; <span class="gradient-text">Education</span></h2>
+        <p class="section-subtitle">Internships, research and academic milestones so far.</p>
+      </div>
+      <div class="timeline-wrapper" id="timelineContent"></div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       SKILLS
+       ========================================================================= -->
+  <section class="skills-section" id="skills">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Toolkit
+        </span>
+        <h2 class="section-title">Skills &amp; <span class="gradient-text">Technologies</span></h2>
+        <p class="section-subtitle">Languages, frameworks and concepts I work with day to day.</p>
+      </div>
+      <div class="skills-grid" id="skillsGrid"></div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       CONTACT
+       ========================================================================= -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Get in touch
+        </span>
+        <h2 class="section-title">Let's <span class="gradient-text">Connect</span></h2>
+        <p class="section-subtitle">Open to opportunities, collaborations and a good chat about building things.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-cards-col" id="contactCards"></div>
+
+        <div class="contact-form-card">
+          <form id="contactForm" onsubmit="return sendContactMessage(event)">
+            <div class="form-group">
+              <label class="form-label" for="contactName">Your Name</label>
+              <input class="form-control" id="contactName" type="text" placeholder="Jane Doe" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contactEmail">Your Email</label>
+              <input class="form-control" id="contactEmail" type="email" placeholder="jane@example.com" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contactMessage">Message</label>
+              <textarea class="form-control" id="contactMessage" placeholder="Tell me about your project or opportunity..." required></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit" style="width:100%">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       FOOTER
+       ========================================================================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <p class="footer-copy">© <span id="footerYear"></span> Sai Tarun Cherukuri. Built with care.</p>
+        <a class="footer-admin-link" id="adminTriggerBtn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Admin
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       MODAL: ADMIN LOGIN (PIN)
+       ========================================================================= -->
+  <div class="modal-backdrop" id="adminLoginModal">
+    <div class="modal-dialog" style="max-width:420px">
+      <div class="modal-header">
+        <h3 class="modal-title">Admin Access</h3>
+        <button class="modal-close-btn" onclick="closeAdminLoginModal()" aria-label="Close">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p style="color:var(--text-secondary);margin-bottom:1rem;">Enter your secret PIN to unlock edit mode (profile photo, projects &amp; details).</p>
+        <input class="form-control" id="adminPinInput" type="password" placeholder="••••" autocomplete="off"
+               onkeydown="if(event.key==='Enter'){event.preventDefault();attemptAdminLogin();}" />
+        <p id="adminPinError" style="color:var(--accent-rose);font-size:0.85rem;margin-top:0.5rem;min-height:1.1rem;"></p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeAdminLoginModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="attemptAdminLogin()">Unlock</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL: PROFILE EDIT
+       ========================================================================= -->
+  <div class="modal-backdrop" id="profileEditModal">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-header">
+        <h3 class="modal-title">Edit Profile &amp; Photo</h3>
+        <button class="modal-close-btn" onclick="closeProfileEditModal()" aria-label="Close">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <form id="profileEditForm">
+        <div class="modal-body">
+          <div style="display:flex;align-items:center;gap:1.25rem;margin-bottom:1.5rem;flex-wrap:wrap;">
+            <img id="profileModalAvatarPreview" src="assets/avatar.svg" alt="Preview" style="width:84px;height:84px;border-radius:14px;object-fit:cover;border:1px solid var(--border-color);" />
+            <div>
+              <button type="button" class="btn btn-secondary btn-sm" onclick="document.getElementById('avatarFileInput').click()">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                Upload New Photo
+              </button>
+              <p style="font-size:0.82rem;color:var(--text-muted);margin-top:0.4rem;">Or paste an image URL below.</p>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div class="form-group"><label class="form-label">Name</label><input class="form-control" id="editName" type="text" required /></div>
+            <div class="form-group"><label class="form-label">Title</label><input class="form-control" id="editTitle" type="text" /></div>
+          </div>
+          <div class="form-group"><label class="form-label">Tagline</label><input class="form-control" id="editTagline" type="text" /></div>
+          <div class="form-group"><label class="form-label">Bio</label><textarea class="form-control" id="editBio" rows="4"></textarea></div>
+          <div class="form-group"><label class="form-label">Photo URL (optional)</label><input class="form-control" id="editPhotoUrl" type="text" placeholder="https://..." /></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div class="form-group"><label class="form-label">Email</label><input class="form-control" id="editEmail" type="email" /></div>
+            <div class="form-group"><label class="form-label">Phone</label><input class="form-control" id="editPhone" type="text" /></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div class="form-group"><label class="form-label">Location</label><input class="form-control" id="editLocation" type="text" /></div>
+            <div class="form-group"><label class="form-label">Status Badge</label><input class="form-control" id="editStatusBadge" type="text" /></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div class="form-group"><label class="form-label">GitHub URL</label><input class="form-control" id="editGithub" type="text" /></div>
+            <div class="form-group"><label class="form-label">LinkedIn URL</label><input class="form-control" id="editLinkedin" type="text" /></div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="handleResetDefaults()">Reset to Defaults</button>
+          <button type="button" class="btn btn-outline" onclick="closeProfileEditModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL: PROJECT ADD/EDIT
+       ========================================================================= -->
+  <div class="modal-backdrop" id="projectModal">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-header">
+        <h3 class="modal-title" id="projectModalTitle">Add New Project</h3>
+        <button class="modal-close-btn" onclick="closeProjectModal()" aria-label="Close">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <form id="projectEditForm">
+        <div class="modal-body">
+          <div class="form-group"><label class="form-label">Project Title</label><input class="form-control" id="projTitle" type="text" required /></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div class="form-group">
+              <label class="form-label">Category</label>
+              <select class="form-control" id="projCategory">
+                <option value="web">Web Development</option>
+                <option value="ml">Machine Learning / AI</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group"><label class="form-label">Tags (comma-separated)</label><input class="form-control" id="projTags" type="text" /></div>
+          </div>
+          <div class="form-group"><label class="form-label">Description</label><textarea class="form-control" id="projDescription" rows="4"></textarea></div>
+          <div class="form-group"><label class="form-label">Live Demo URL (external site)</label><input class="form-control" id="projLiveUrl" type="text" placeholder="https://..." /></div>
+          <div class="form-group"><label class="form-label">GitHub URL</label><input class="form-control" id="projGithubUrl" type="text" /></div>
+          <div class="form-group"><label class="form-label">Image URL</label><input class="form-control" id="projImageUrl" type="text" placeholder="https://..." /></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="closeProjectModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Project</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL: RESUME (VIEW + DOWNLOAD)
+       ========================================================================= -->
+  <div class="modal-backdrop" id="resumeModal">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-header">
+        <h3 class="modal-title">Resume</h3>
+        <button class="modal-close-btn" onclick="closeResumeModal()" aria-label="Close">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body" id="resumeSheet"></div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeResumeModal()">Close</button>
+        <button class="btn btn-primary" onclick="window.print()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          Download as PDF
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL: FACEID LIVE DEMO
+       ========================================================================= -->
+  <div class="modal-backdrop" id="faceIdDemoModal">
+    <div class="modal-dialog modal-xxl">
+      <div class="modal-header">
+        <h3 class="modal-title">FaceID Biometric Recognition — Live Demo</h3>
+        <button class="modal-close-btn" onclick="closeFaceIdDemo()" aria-label="Close">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="demo-preset-strip">
+          <button class="face-preset-chip active" onclick="selectFaceProfile(0)">Sai Tarun (Admin)</button>
+          <button class="face-preset-chip" onclick="selectFaceProfile(1)">Dr. Sarah Jenkins</button>
+          <button class="face-preset-chip" onclick="selectFaceProfile(2)">Marcus Cole</button>
+          <button class="face-preset-chip" onclick="selectFaceProfile(3)">Unregistered</button>
+        </div>
+
+        <div class="face-scanner-grid">
+          <div class="face-camera-feed-box">
+            <img class="face-preview-img" id="faceScannerPreviewImg" src="assets/avatar.svg" alt="Face preview" />
+            <div class="scanner-crosshair"></div>
+            <div class="scanner-beam-line" id="faceScannerBeam"></div>
+            <div class="face-landmarks-overlay" id="faceLandmarksOverlay">
+              <span class="landmark-dot" style="top:32%;left:38%"></span>
+              <span class="landmark-dot" style="top:32%;left:62%"></span>
+              <span class="landmark-dot" style="top:50%;left:50%"></span>
+              <span class="landmark-dot" style="top:64%;left:42%"></span>
+              <span class="landmark-dot" style="top:64%;left:58%"></span>
+            </div>
+          </div>
+
+          <div>
+            <p style="color:var(--text-secondary);margin-bottom:1rem;">OpenCV YuNet detects 5 facial landmarks and SFace extracts a 128-D embedding, matched via Cosine Similarity (FAR &lt; 0.01%). Select a profile or upload a photo, then run the scan.</p>
+            <label class="btn btn-secondary btn-sm" style="cursor:pointer;margin-bottom:0.75rem;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              Upload Photo
+              <input type="file" accept="image/*" onchange="handleFacePhotoUpload(event)" style="display:none" />
+            </label>
+            <button class="btn btn-primary" id="faceRunScanBtn" onclick="runFaceIdScan()" style="width:100%;">
+              <span>⚡</span> Run Biometric Scan &amp; Verification
+            </button>
+          </div>
+        </div>
+
+        <div id="faceScanResultCard" style="display:none;margin-top:1.75rem;padding:1.5rem;background:var(--bg-elevated);border-radius:var(--radius-md);border:1px solid var(--border-color);">
+          <div style="display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;margin-bottom:1.25rem;">
+            <img id="faceResultSnapshotImg" src="assets/avatar.svg" alt="Snapshot" style="width:72px;height:72px;border-radius:12px;object-fit:cover;border:2px solid var(--accent-teal);" />
+            <div class="biometric-badge verified" id="faceResultStatusBadge">ACCESS GRANTED</div>
+          </div>
+
+          <div class="face-accuracy-gauge-wrap">
+            <div class="gauge-svg-box">
+              <svg width="100" height="100" viewBox="0 0 100 100">
+                <circle class="gauge-bg" cx="50" cy="50" r="45" fill="none" stroke-width="8"></circle>
+                <circle class="gauge-progress" id="faceGaugeCircle" cx="50" cy="50" r="45" fill="none" stroke-width="8" stroke-linecap="round"></circle>
+              </svg>
+              <div class="gauge-text-center"><span id="faceResultAccuracy">--%</span></div>
+            </div>
+            <div>
+              <strong style="display:block;margin-bottom:0.2rem;">Verification Confidence</strong>
+              <span style="color:var(--text-secondary);font-size:0.88rem;">Cosine similarity against SFace embedding</span>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem;margin-top:1rem;">
+            <div><span style="color:var(--text-muted);font-size:0.8rem;">IDENTITY</span><br><strong id="faceResultName">—</strong></div>
+            <div><span style="color:var(--text-muted);font-size:0.8rem;">ROLE / DEPT</span><br><span id="faceResultRole">—</span></div>
+            <div><span style="color:var(--text-muted);font-size:0.8rem;">BADGE ID</span><br><code id="faceResultBadgeId">—</code></div>
+            <div><span style="color:var(--text-muted);font-size:0.8rem;">ACCESS LEVEL</span><br><span id="faceResultAccessLevel">—</span></div>
+          </div>
+        </div>
+
+        <table class="forensic-audit-table">
+          <thead>
+            <tr><th>Time</th><th>Identity</th><th>Result</th><th>Confidence</th><th>Method</th></tr>
+          </thead>
+          <tbody id="faceAuditLogBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL: XAI THREAT DETECTION DEMO
+       ========================================================================= -->
+  <div class="modal-backdrop" id="threatDemoModal">
+    <div class="modal-dialog modal-xxl">
+      <div class="modal-header">
+        <h3 class="modal-title">Explainable AI Threat Detection — Live Demo</h3>
+        <button class="modal-close-btn" onclick="closeThreatDemo()" aria-label="Close">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="demo-preset-strip">
+          <button class="threat-preset-btn active" onclick="loadThreatPreset(0)">Normal HTTPS</button>
+          <button class="threat-preset-btn" onclick="loadThreatPreset(1)">SYN Flood DDoS</button>
+          <button class="threat-preset-btn" onclick="loadThreatPreset(2)">SSH Brute-Force</button>
+          <button class="threat-preset-btn" onclick="loadThreatPreset(3)">SQL Injection</button>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.5rem;">
+          <div class="form-group" style="margin:0;">
+            <label class="form-label">Packet Rate: <strong id="threatPacketRateVal">120 pkts/s</strong></label>
+            <input type="range" class="demo-range" id="threatPacketRate" min="0" max="10000" value="120" oninput="analyzeThreatPacket()" />
+          </div>
+          <div class="form-group" style="margin:0;">
+            <label class="form-label">Target Port</label>
+            <input type="number" class="form-control" id="threatPort" min="1" max="65535" value="443" oninput="analyzeThreatPacket()" />
+          </div>
+          <div class="form-group" style="margin:0;">
+            <label class="form-label">Payload Entropy: <strong id="threatEntropyVal">3.2</strong></label>
+            <input type="range" class="demo-range" id="threatEntropy" min="0" max="8" step="0.1" value="3.2" oninput="analyzeThreatPacket()" />
+          </div>
+          <div class="form-group" style="margin:0;">
+            <label class="form-label">Failed Handshakes: <strong id="threatFailedHandshakeVal">1%</strong></label>
+            <input type="range" class="demo-range" id="threatFailedHandshake" min="0" max="100" value="1" oninput="analyzeThreatPacket()" />
+          </div>
+        </div>
+
+        <div class="threat-status benign" id="threatResultStatus">
+          <strong>🛡️ Benign Network Packet Verified</strong>
+          <span>Model Confidence: — (Normal Traffic)</span>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin-bottom:1.5rem;">
+          <div style="padding:0.9rem;background:var(--bg-elevated);border-radius:var(--radius-sm);text-align:center;">
+            <span style="color:var(--text-muted);font-size:0.78rem;display:block;">Random Forest</span>
+            <strong id="threatModelRf">—</strong>
+          </div>
+          <div style="padding:0.9rem;background:var(--bg-elevated);border-radius:var(--radius-sm);text-align:center;">
+            <span style="color:var(--text-muted);font-size:0.78rem;display:block;">SVM</span>
+            <strong id="threatModelSvm">—</strong>
+          </div>
+          <div style="padding:0.9rem;background:var(--bg-elevated);border-radius:var(--radius-sm);text-align:center;">
+            <span style="color:var(--text-muted);font-size:0.78rem;display:block;">Logistic Regression</span>
+            <strong id="threatModelLr">—</strong>
+          </div>
+        </div>
+
+        <h4 style="font-size:1.05rem;margin-bottom:0.75rem;">SHAP / LIME Feature Attribution</h4>
+        <div id="threatXaiAttributionList"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL: BURNOUT PREDICTOR DEMO
+       ========================================================================= -->
+  <div class="modal-backdrop" id="burnoutDemoModal">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-header">
+        <h3 class="modal-title">Employee Burnout Predictor — Live Demo</h3>
+        <button class="modal-close-btn" onclick="closeBurnoutDemo()" aria-label="Close">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p style="color:var(--text-secondary);margin-bottom:1.25rem;">A Linear Regression model (built during the EDUNET internship) estimates burnout risk from workload signals. Adjust the sliders to see the prediction update in real time.</p>
+
+        <div class="form-group">
+          <label class="form-label">Working Hours / Week: <strong id="burnoutHoursVal">40 hrs/week</strong></label>
+          <input type="range" class="demo-range" id="burnoutHours" min="20" max="80" value="40" oninput="calculateBurnoutRisk()" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Overtime Days / Month: <strong id="burnoutOvertimeVal">2 days/month</strong></label>
+          <input type="range" class="demo-range" id="burnoutOvertime" min="0" max="30" value="2" oninput="calculateBurnoutRisk()" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Meetings / Day: <strong id="burnoutMeetingsVal">2 hrs/day</strong></label>
+          <input type="range" class="demo-range" id="burnoutMeetings" min="0" max="10" step="0.5" value="2" oninput="calculateBurnoutRisk()" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Task Switches / Day: <strong id="burnoutSwitchingVal">5 switches/day</strong></label>
+          <input type="range" class="demo-range" id="burnoutSwitching" min="0" max="20" value="5" oninput="calculateBurnoutRisk()" />
+        </div>
+
+        <div style="text-align:center;margin-top:1.5rem;">
+          <span style="color:var(--text-muted);font-size:0.85rem;">PREDICTED BURNOUT RISK</span>
+          <div style="font-size:2.6rem;font-weight:800;color:var(--accent-teal);"><span id="burnoutScoreValue">--%</span></div>
+          <div class="burnout-gauge-track"><div class="burnout-gauge-fill" id="burnoutGaugeFill" style="width:0%;background-color:var(--accent-teal);"></div></div>
+          <span class="burnout-badge low" id="burnoutStatusLabel">Low Burnout Risk</span>
+          <p id="burnoutAdviceText" style="color:var(--text-secondary);font-size:0.9rem;max-width:480px;margin:0.75rem auto 0;"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL: COMPLAINT WORKFLOW DEMO
+       ========================================================================= -->
+  <div class="modal-backdrop" id="complaintDemoModal">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-header">
+        <h3 class="modal-title">Complaint Management System — Live Demo</h3>
+        <button class="modal-close-btn" onclick="closeComplaintDemo()" aria-label="Close">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p style="color:var(--text-secondary);margin-bottom:1.25rem;">Built during the APCOB internship — register a simulated customer complaint and watch the system auto-dispatch a ticket with SLA routing.</p>
+        <form onsubmit="return submitComplaintSimulation(event)">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div class="form-group">
+              <label class="form-label">Complaint Category</label>
+              <select class="form-control" id="complaintCategory">
+                <option>Account Related</option>
+                <option>Transaction Issue</option>
+                <option>Card Services</option>
+                <option>Customer Service</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Priority</label>
+              <select class="form-control" id="complaintPriority">
+                <option>Low</option>
+                <option>Medium</option>
+                <option>High</option>
+                <option>Critical</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Describe the complaint</label>
+            <textarea class="form-control" id="complaintDesc" rows="3" placeholder="e.g. Unable to access my savings account..."></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit" style="width:100%;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Submit Complaint
+          </button>
+        </form>
+        <div id="complaintSimOutput" style="display:none;margin-top:1.5rem;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       SCRIPTS (load order matters: data -> admin -> app -> demos)
+       ========================================================================= -->
+  <script src="js/data.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/interactive-demos.js"></script>
+</body>
+</html>
